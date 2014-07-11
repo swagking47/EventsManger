@@ -57,51 +57,93 @@ use pocketmine\event\server\ServerCommandEvent;
 
 class Main extends PluginBase implements Listener{
 public function onEnable(){
-$this->BlockBreakEvent = new Config($this->getDataFolder()."BlockBreakEvent.yml", Config::YAML, array(BlockBreakEvent = true));
-$this->BlockPlaceEvent = new Config($this->getDataFolder()."BlockPlaceEvent.yml", Config::YAML, array(BlockPlaceEvent = true));
-$this->EntityDamageByEntityEvent = new Config($this->getDataFolder()."EntityDamageByEntityEvent.yml", Config::YAML, array(EntityDamageByEntityEvent = true));		
-$this->EntityDamageEvent = new Config($this->getDataFolder()."EntityDamageEvent.yml", Config::YAML, array("EntityDamageEvent" = true));				
-$this->EntityDeathEvent = new Config($this->getDataFolder()."EntityDeathEvent.yml", Config::YAML, array("EntityDeathEvent" = true));
-$this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelChangeEvent.yml", Config::YAML, array("EntityLevelChangeEvent" = true));	
-$this->EntityMoveEvent = new Config($this->getDataFolder()."EntityMoveEvent.yml", Config::YAML, array("EntityMoveEvent" = true));	
-$this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array("EntityRegainHealthEvent" = true));	
-$this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEvent.yml", Config::YAML, array("EntityTeleportEven$this->EntityExplodeEvent = new Config($this->getDataFolder()."EntityExplodeEvent.yml", Config::YAML, array("EntityExplodeEvent" = true));t" = true));
-$this->InventoryCloseEvent = new Config($this->getDataFolder()."InventoryCloseEvent.yml", Config::YAML, array("InventoryCloseEvent" = true));
-$this->InventoryOpenEvent = new Config($this->getDataFolder()."InventoryOpenEvent.yml", Config::YAML, array("InventoryOpenEvent" = true));
-$this->InventoryPickupItemEvent = new Config($this->getDataFolder()."InventoryPickupItemEvent.yml", Config::YAML, array("InventoryPickupItemEvent" = true));
-$this->SpawnChangeEvent = new Config($this->getDataFolder()."SpawnChangeEvent.yml", Config::YAML, array("SpawnChangeEvent" = true));
-$this->LevelLoadEvent = new Config($this->getDataFolder()."LevelLoadEvent.yml", Config::YAML, array("LevelLoadEvent" = true));
-$this->LevelUnLoadEvent = new Config($this->getDataFolder()."LevelUnLoadEvent.yml", Config::YAML, array("LevelUnLoadEvent" = true));
-$this->LevelSaveEvent = new Config($this->getDataFolder()."LevelSaveEvent.yml", Config::YAML, array("LevelSaveEvent" = true));
-$this->LevelInitEvent = new Config($this->getDataFolder()."LevelInitEvent.yml", Config::YAML, array("LevelInitEvent" = true));
-$this->PlayerAchievementAwardedEvent = new Config($this->getDataFolder()."PlayerAchievementAwardedEvent.yml", Config::YAML, array("PlayerAchievementAwardedEvent" = true));
-$this->PlayerAnimationEvent = new Config($this->getDataFolder()."PlayerAnimationEvent.yml", Config::YAML, array("PlayerAnimationEvent" = true));
-$this->PlayerChatEvent = new Config($this->getDataFolder()."PlayerChatEvent.yml", Config::YAML, array("PlayerChatEvent" = true));	
-$this->PlayerCommandPreprocessEvent = new Config($this->getDataFolder()."PlayerCommandPreprocessEvent.yml", Config::YAML, array("PlayerCommandPreprocessEvent" = true));
-$this->PlayerDeathEvent = new Config($this->getDataFolder()."PlayerDeathEvent.yml", Config::YAML, array("PlayerDeathEvent" = true));
-$this->PlayerDropItemEvent = new Config($this->getDataFolder()."PlayerDropItemEvent.yml", Config::YAML, array("PlayerDropItemEvent" = true));
-$this->PlayerGameModeChangeEvent = new Config($this->getDataFolder()."PlayerGameModeChangeEvent.yml", Config::YAML, array("PlayerGameModeChangeEvent" = true));
-$this->PlayerInteractEvent = new Config($this->getDataFolder()."PlayerInteractEvent.yml", Config::YAML, array("PlayerInteractEvent" = true));
-$this->PlayerItemConsumeEvent = new Config($this->getDataFolder()."PlayerItemConsumeEvent.yml", Config::YAML, array("PlayerItemConsumeEvent" = true));
-$this->PlayerJoinEvent = new Config($this->getDataFolder()."PlayerJoinEvent.yml", Config::YAML, array("PlayerJoinEvent" = true));
-$this->PlayerKickEvent = new Config($this->getDataFolder()."PlayerKickEvent.yml", Config::YAML, array("PlayerKickEvent" = true));
-$this->PlayerLoginEvent = new Config($this->getDataFolder()."PlayerLoginEvent.yml", Config::YAML, array("PlayerLoginEvent" = true));
-$this->PlayerPreLoginEvent = new Config($this->getDataFolder()."PlayerPreLoginEvent.yml", Config::YAML, array("PlayerPreLoginEvent" = true));
-$this->PlayerQuitEvent = new Config($this->getDataFolder()."PlayerQuitEvent.yml", Config::YAML, array("PlayerQuitEvent" = true));
-$this->PlayerRespawnEvent = new Config($this->getDataFolder()."PlayerRespawnEvent.yml", Config::YAML, array("PlayerRespawnEvent" = true));
-$this->PluginDisableEvent = new Config($this->getDataFolder()."PluginDisableEvent.yml", Config::YAML, array("PluginDisableEvent" = true));
-$this->PluginEnableEvent = new Config($this->getDataFolder()."PluginEnableEvent.yml", Config::YAML, array("PluginEnableEvent" = true));
-$this->DataPacketReceiveEvent = new Config($this->getDataFolder()."DataPacketReceiveEvent.yml", Config::YAML, array("DataPacketReceiveEvent" = true));
-$this->DataPacketSendEvent = new Config($this->getDataFolder()."DataPacketSendEvent.yml", Config::YAML, array("DataPacketSendEvent" = true));
-$this->ServerCommandEvent = new Config($this->getDataFolder()."ServerCommandEvent.yml", Config::YAML, array("ServerCommandEvent" = true));
-$this->EntityArmorChangeEvent = new Config($this->getDataFolder()."EntityArmorChangeEvent.yml", Config::YAML, array("EntityArmorChangeEvent" = true));
-$this->EntityDespawnEvent = new Config($this->getDataFolder()."EntityDespawnEvent.yml", Config::YAML, array("EntityDespawnEvent" = true));
-$this->EntityExplodeEvent = new Config($this->getDataFolder()."EntityExplodeEvent.yml", Config::YAML, array("EntityExplodeEvent" = true));
-$this->EntityMotionEvent = new Config($this->getDataFolder()."EntityMotionEvent.yml", Config::YAML, array("EntityMotionEvent" = true));
-$this->EntitySpawnEvent = new Config($this->getDataFolder()."EntitySpawnEvent.yml", Config::YAML, array("EntitySpawnEvent" = true));
-$this->CraftItemEvent = new Config($this->getDataFolder()."CraftItemEvent.yml", Config::YAML, array("CraftItemEvent" = true));
-$this->PlayerItemHeldEvent = new Config($this->getDataFolder()."PlayerItemHeldEvent.yml", Config::YAML, array("PlayerItemHeldEvent" = true));
-
+$this->BlockBreakEvent = new Config($this->getDataFolder()."BlockBreakEvent.yml", Config::YAML, array());
+$this->BlockPlaceEvent = new Config($this->getDataFolder()."BlockPlaceEvent.yml", Config::YAML, array());
+$this->EntityDamageByEntityEvent = new Config($this->getDataFolder()."EntityDamageByEntityEvent.yml", Config::YAML, array());		
+$this->EntityDamageEvent = new Config($this->getDataFolder()."EntityDamageEvent.yml", Config::YAML, array());				
+$this->EntityDeathEvent = new Config($this->getDataFolder()."EntityDeathEvent.yml", Config::YAML, array());
+$this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelChangeEvent.yml", Config::YAML, array());	
+$this->EntityMoveEvent = new Config($this->getDataFolder()."EntityMoveEvent.yml", Config::YAML, array());	
+$this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array());	
+$this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEvent.yml", Config::YAML, array());
+$this->InventoryCloseEvent = new Config($this->getDataFolder()."InventoryCloseEvent.yml", Config::YAML, array());
+$this->InventoryOpenEvent = new Config($this->getDataFolder()."InventoryOpenEvent.yml", Config::YAML, array());
+$this->InventoryPickupItemEvent = new Config($this->getDataFolder()."InventoryPickupItemEvent.yml", Config::YAML, array();
+$this->SpawnChangeEvent = new Config($this->getDataFolder()."SpawnChangeEvent.yml", Config::YAML, array());
+$this->LevelLoadEvent = new Config($this->getDataFolder()."LevelLoadEvent.yml", Config::YAML, array());
+$this->LevelUnLoadEvent = new Config($this->getDataFolder()."LevelUnLoadEvent.yml", Config::YAML, array());
+$this->LevelSaveEvent = new Config($this->getDataFolder()."LevelSaveEvent.yml", Config::YAML, array());
+$this->LevelInitEvent = new Config($this->getDataFolder()."LevelInitEvent.yml", Config::YAML, array());
+$this->PlayerAchievementAwardedEvent = new Config($this->getDataFolder()."PlayerAchievementAwardedEvent.yml", Config::YAML, array());
+$this->PlayerAnimationEvent = new Config($this->getDataFolder()."PlayerAnimationEvent.yml", Config::YAML, array());
+$this->PlayerChatEvent = new Config($this->getDataFolder()."PlayerChatEvent.yml", Config::YAML, array());	
+$this->PlayerCommandPreprocessEvent = new Config($this->getDataFolder()."PlayerCommandPreprocessEvent.yml", Config::YAML, array());
+$this->PlayerDeathEvent = new Config($this->getDataFolder()."PlayerDeathEvent.yml", Config::YAML, array());
+$this->PlayerDropItemEvent = new Config($this->getDataFolder()."PlayerDropItemEvent.yml", Config::YAML, array());
+$this->PlayerGameModeChangeEvent = new Config($this->getDataFolder()."PlayerGameModeChangeEvent.yml", Config::YAML, array());
+$this->PlayerInteractEvent = new Config($this->getDataFolder()."PlayerInteractEvent.yml", Config::YAML, array());
+$this->PlayerItemConsumeEvent = new Config($this->getDataFolder()."PlayerItemConsumeEvent.yml", Config::YAML, array();
+$this->PlayerJoinEvent = new Config($this->getDataFolder()."PlayerJoinEvent.yml", Config::YAML, array());
+$this->PlayerKickEvent = new Config($this->getDataFolder()."PlayerKickEvent.yml", Config::YAML, array());
+$this->PlayerLoginEvent = new Config($this->getDataFolder()."PlayerLoginEvent.yml", Config::YAML, array());
+$this->PlayerPreLoginEvent = new Config($this->getDataFolder()."PlayerPreLoginEvent.yml", Config::YAML, array());
+$this->PlayerQuitEvent = new Config($this->getDataFolder()."PlayerQuitEvent.yml", Config::YAML, array());
+$this->PlayerRespawnEvent = new Config($this->getDataFolder()."PlayerRespawnEvent.yml", Config::YAML, array());
+$this->PluginDisableEvent = new Config($this->getDataFolder()."PluginDisableEvent.yml", Config::YAML, array());
+$this->PluginEnableEvent = new Config($this->getDataFolder()."PluginEnableEvent.yml", Config::YAML, array());
+$this->DataPacketReceiveEvent = new Config($this->getDataFolder()."DataPacketReceiveEvent.yml", Config::YAML, array());
+$this->DataPacketSendEvent = new Config($this->getDataFolder()."DataPacketSendEvent.yml", Config::YAML, array());
+$this->ServerCommandEvent = new Config($this->getDataFolder()."ServerCommandEvent.yml", Config::YAML, array());
+$this->EntityArmorChangeEvent = new Config($this->getDataFolder()."EntityArmorChangeEvent.yml", Config::YAML, array());
+$this->EntityDespawnEvent = new Config($this->getDataFolder()."EntityDespawnEvent.yml", Config::YAML, array());
+$this->EntityExplodeEvent = new Config($this->getDataFolder()."EntityExplodeEvent.yml", Config::YAML, array());
+$this->EntityMotionEvent = new Config($this->getDataFolder()."EntityMotionEvent.yml", Config::YAML, array());
+$this->EntitySpawnEvent = new Config($this->getDataFolder()."EntitySpawnEvent.yml", Config::YAML, array());
+$this->CraftItemEvent = new Config($this->getDataFolder()."CraftItemEvent.yml", Config::YAML, array());
+$this->PlayerItemHeldEvent = new Config($this->getDataFolder()."PlayerItemHeldEvent.yml", Config::YAML, array());
+$this->BlockBreakEvent->set("e", true);
+$this->BlockPlaceEvent->set("e", true);
+$this->EntityDamageByEntityEvent->set("e", true);
+$this->EntityDamageEvent->set("e", true);
+$this->EntityDeathEvent->set("e", true);
+$this->EntityLevelChangeEvent->set("e", true);
+$this->EntityMoveEvent->set("e", true);
+$this->EntityRegainHealthEvent->set("e", true);
+$this->EntityTeleportEvent->set("e", true);
+$this->InventoryCloseEvent->set("e", true);
+$this->InventoryOpenEvent->set("e", true);
+$this->InventoryPickupItemEvent->set("e", true);
+$this->SpawnChangeEvent->set("e", true);
+$this->LevelLoadEvent->set("e", true);
+$this->LevelUnLoadEvent->set("e", true);
+$this->LevelSaveEvent->set("e", true);
+$this->LevelInitEvent->set("e", true);
+$this->PlayerAchievementAwardedEvent->set("e", true);
+$this->PlayerAnimationEvent->set("e", true);
+$this->PlayerChatEvent->set("e", true);
+$this->PlayerCommandPreprocessEvent->set("e", true);
+$this->PlayerDeathEvent->set("e", true);
+$this->PlayerDropItemEvent->set("e", true);
+$this->PlayerGameModeChangeEvent->set("e", true);
+$this->PlayerInteractEvent->set("e", true);
+$this->PlayerItemConsumeEvent->set("e", true);
+$this->PlayerJoinEvent->set("e", true);
+$this->PlayerKickEvent->set("e", true);
+$this->PlayerLoginEvent->set("e", true);
+$this->PlayerPreLoginEvent->set("e", true);
+$this->PlayerQuitEvent->set("e", true);
+$this->PlayerRespawnEvent->set("e", true);
+$this->PluginDisableEvent->set("e", true);
+$this->PluginEnableEvent->set("e", true);
+$this->DataPacketReceiveEvent->set("e", true);
+$this->DataPacketSendEvent->set("e", true);
+$this->ServerCommandEvent->set("e", true);
+$this->EntityArmorChangeEvent("e", true);
+$this->EntityDespawnEvent->set("e", true);
+$this->EntityExplodeEvent->set("e",true);
+$this->EntityMotionEvent->set("e", true);
+$this->EntitySpawnEvent->set("e", true);
+$this->CraftItemEvent->set("e", true):
 
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		}
@@ -109,7 +151,85 @@ $this->PlayerItemHeldEvent = new Config($this->getDataFolder()."PlayerItemHeldEv
 		public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
 		switch($cmd->getName()){
 			case "eventmanger":
-				if($args[0] == ""){
+				if($args[0] == "bbe" and $args[1] == "on"){
+					$this->BlockBreakEvent->set("e", true);
+					$this->BlockBreakEvent->save();
+				}
+					if($args[0] == "bbe" and $args[1] == "off"){
+					$this->BlockBreakEvent->set("e", false);
+					$this->BlockBreakEvent->save();
+				}
+				if($args[0] == "bpe" and $args[1] == "on"){
+					$this->BlockPlaceEvent->set("e", true);
+					$this->BlockPlaceEvent->save();
+				}
+					if($args[0] == "bpe" and $args[1] == "off"){
+					$this->BlockPlaceEvent->set("e", false);
+					$this->BlockPlaceEvent->save();
+				}
+				if($args[0] == "edbe" and $args[1] == "on"){
+					$this->EntityDamageByEntityEvent->set("e", true);
+					$this->EntityDamageByEntityEvent->save();
+				}
+					if($args[0] == "edbe" and $args[1] == "off"){
+					$this->EntityDamageByEntityEvent->set("e", false);
+					$this->EntityDamageByEntityEvent->save();
+				}
+				        if($args[0] == "ede" and $args[1] == "on"){
+					$this->EntityDamageEvent->set("e", true);
+					$this->EntityDamageEvent->save();
+				}
+					if($args[0] == "ede" and $args[1] == "off"){
+					$this->EntityDamageEvent->set("e", false);
+					$this->EntityDamageEvent->save();
+				}
+					        if($args[0] == "edee" and $args[1] == "on"){
+					$this->EntityDeathEvent->set("e", true);
+					$this->EntityDeathEvent->save();
+				}
+					if($args[0] == "edee" and $args[1] == "off"){
+					$this->EntityDeathEvent->set("e", false);
+					$this->EntityDeathEvent->save();
+				}
+						        if($args[0] == "elce" and $args[1] == "on"){
+					$this->EntityLevelChangeEvent->set("e", true);
+					$this->EntityLevelChangeEvent->save();
+				}
+					if($args[0] == "elce" and $args[1] == "off"){
+					$this->EntityLevelChangeEvent->set("e", false);
+					$this->EntityLevelChangeEvent->save();
+				}
+						        if($args[0] == "eme" and $args[1] == "on"){
+					$this->EntityMoveEvent->set("e", true);
+					$this->EntityMoveEvent->save();
+				}
+					if($args[0] == "eme" and $args[1] == "off"){
+					$this->EntityMoveEvent->set("e", false);
+					$this->EntityMoveEvent->save();
+				}
+							        if($args[0] == "erhe" and $args[1] == "on"){
+					$this->EntityRegainHealthEvent->set("e", true);
+					$this->EntityRegainHealthEvent->save();
+				}
+					if($args[0] == "erhe" and $args[1] == "off"){
+					$this->EntityRegainHealthEvent->set("e", false);
+					$this->EntityRegainHealthEvent->save();
+				}
+							        if($args[0] == "ete" and $args[1] == "on"){
+					$this->EntityEvent->set("e", true);
+					$this->EntityMoveEvent->save();
+				}
+					if($args[0] == "ete" and $args[1] == "off"){
+					$this->EntityMoveEvent->set("e", false);
+					$this->EntityMoveEvent->save();
+				}
+				
+				
+				
+		
+		
+				
+					
 
 
 
