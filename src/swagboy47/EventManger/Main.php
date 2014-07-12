@@ -101,49 +101,49 @@ $this->EntityMotionEvent = new Config($this->getDataFolder()."EntityMotionEvent.
 $this->EntitySpawnEvent = new Config($this->getDataFolder()."EntitySpawnEvent.yml", Config::YAML, array());
 $this->CraftItemEvent = new Config($this->getDataFolder()."CraftItemEvent.yml", Config::YAML, array());
 $this->PlayerItemHeldEvent = new Config($this->getDataFolder()."PlayerItemHeldEvent.yml", Config::YAML, array());
-$this->BlockBreakEvent->set("e", true);
-$this->BlockPlaceEvent->set("e", true);
-$this->EntityDamageByEntityEvent->set("e", true);
-$this->EntityDamageEvent->set("e", true);
-$this->EntityDeathEvent->set("e", true);
-$this->EntityLevelChangeEvent->set("e", true);
-$this->EntityMoveEvent->set("e", true);
-$this->EntityRegainHealthEvent->set("e", true);
-$this->EntityTeleportEvent->set("e", true);
-$this->InventoryCloseEvent->set("e", true);
-$this->InventoryOpenEvent->set("e", true);
-$this->InventoryPickupItemEvent->set("e", true);
-$this->SpawnChangeEvent->set("e", true);
-$this->LevelLoadEvent->set("e", true);
-$this->LevelUnLoadEvent->set("e", true);
-$this->LevelSaveEvent->set("e", true);
-$this->LevelInitEvent->set("e", true);
-$this->PlayerAchievementAwardedEvent->set("e", true);
-$this->PlayerAnimationEvent->set("e", true);
-$this->PlayerChatEvent->set("e", true);
-$this->PlayerCommandPreprocessEvent->set("e", true);
-$this->PlayerDeathEvent->set("e", true);
-$this->PlayerDropItemEvent->set("e", true);
-$this->PlayerGameModeChangeEvent->set("e", true);
-$this->PlayerInteractEvent->set("e", true);
-$this->PlayerItemConsumeEvent->set("e", true);
-$this->PlayerJoinEvent->set("e", true);
-$this->PlayerKickEvent->set("e", true);
-$this->PlayerLoginEvent->set("e", true);
-$this->PlayerPreLoginEvent->set("e", true);
-$this->PlayerQuitEvent->set("e", true);
-$this->PlayerRespawnEvent->set("e", true);
-$this->PluginDisableEvent->set("e", true);
-$this->PluginEnableEvent->set("e", true);
-$this->DataPacketReceiveEvent->set("e", true);
-$this->DataPacketSendEvent->set("e", true);
-$this->ServerCommandEvent->set("e", true);
-$this->EntityArmorChangeEvent("e", true);
-$this->EntityDespawnEvent->set("e", true);
-$this->EntityExplodeEvent->set("e",true);
-$this->EntityMotionEvent->set("e", true);
-$this->EntitySpawnEvent->set("e", true);
-$this->CraftItemEvent->set("e", true):
+$this->BlockBreakEvent1 = true;
+$this->BlockPlaceEvent1 = true;
+$this->EntityDamageByEntityEvent1 = true;
+$this->EntityDamageEvent1 = true;
+$this->EntityDeathEvent1 = true;
+$this->EntityLevelChangeEvent1 = true;
+$this->EntityMoveEvent1 = true;
+$this->EntityRegainHealthEvent1 = true;
+$this->EntityTeleportEvent1 = true;
+$this->InventoryCloseEvent1 = true;
+$this->InventoryOpenEvent1 = true;
+$this->InventoryPickupItemEvent1 = true;
+$this->SpawnChangeEvent1 = true;
+$this->LevelLoadEvent1 = true;
+$this->LevelUnLoadEvent1 = true;
+$this->LevelSaveEvent1 = true;
+$this->LevelInitEvent1 = true;
+$this->PlayerAchievementAwardedEvent1 = true;
+$this->PlayerAnimationEvent1 = true;
+$this->PlayerChatEvent1 = true;
+$this->PlayerCommandPreprocessEvent1 = true;
+$this->PlayerDeathEvent1 = true;
+$this->PlayerDropItemEvent1 = true;
+$this->PlayerGameModeChangeEvent1 = true;
+$this->PlayerInteractEvent1 = true;
+$this->PlayerItemConsumeEvent1 = true;
+$this->PlayerJoinEvent1 = true;
+$this->PlayerKickEvent1 = true;
+$this->PlayerLoginEvent1 = true;
+$this->PlayerPreLoginEvent1 = true;
+$this->PlayerQuitEvent1 = true;
+$this->PlayerRespawnEvent1 = true;
+$this->PluginDisableEvent1 = true;
+$this->PluginEnableEvent1 = true;
+$this->DataPacketReceiveEvent1 = true;
+$this->DataPacketSendEvent1 = true;
+$this->ServerCommandEvent1 = true;
+$this->EntityArmorChangeEvent1 = true;
+$this->EntityDespawnEvent1 = true;
+$this->EntityExplodeEvent1 = true;
+$this->EntityMotionEvent1 = true;
+$this->EntitySpawnEvent1 = true;
+$this->CraftItemEvent1 = true;
 
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		}
@@ -152,77 +152,278 @@ $this->CraftItemEvent->set("e", true):
 		switch($cmd->getName()){
 			case "eventmanger":
 				if($args[0] == "bbe" and $args[1] == "on"){
-					$this->BlockBreakEvent->set("e", true);
-					$this->BlockBreakEvent->save();
+					$this->BlockBreakEvent1 = true;
+					
 				}
 					if($args[0] == "bbe" and $args[1] == "off"){
-					$this->BlockBreakEvent->set("e", false);
-					$this->BlockBreakEvent->save();
+					$this->BlockBreakEvent1 = false;
 				}
 				if($args[0] == "bpe" and $args[1] == "on"){
-					$this->BlockPlaceEvent->set("e", true);
-					$this->BlockPlaceEvent->save();
+					$this->BlockPlaceEvent1 = true;
 				}
 					if($args[0] == "bpe" and $args[1] == "off"){
-					$this->BlockPlaceEvent->set("e", false);
-					$this->BlockPlaceEvent->save();
+					$this->BlockPlaceEvent1 = false;
 				}
 				if($args[0] == "edbe" and $args[1] == "on"){
-					$this->EntityDamageByEntityEvent->set("e", true);
-					$this->EntityDamageByEntityEvent->save();
+					$this->EntityDamageByEntityEvent1 = true;
 				}
 					if($args[0] == "edbe" and $args[1] == "off"){
-					$this->EntityDamageByEntityEvent->set("e", false);
-					$this->EntityDamageByEntityEvent->save();
+					$this->EntityDamageByEntityEvent1 = false;
 				}
 				        if($args[0] == "ede" and $args[1] == "on"){
-					$this->EntityDamageEvent->set("e", true);
-					$this->EntityDamageEvent->save();
+					$this->EntityDamageEvent1 = true;
 				}
 					if($args[0] == "ede" and $args[1] == "off"){
-					$this->EntityDamageEvent->set("e", false);
-					$this->EntityDamageEvent->save();
+					$this->EntityDamageEvent1 = false;
 				}
 					        if($args[0] == "edee" and $args[1] == "on"){
-					$this->EntityDeathEvent->set("e", true);
-					$this->EntityDeathEvent->save();
+					$this->EntityDeathEvent1 = true;
 				}
 					if($args[0] == "edee" and $args[1] == "off"){
-					$this->EntityDeathEvent->set("e", false);
-					$this->EntityDeathEvent->save();
+					$this->EntityDeathEvent1 = false;
 				}
 						        if($args[0] == "elce" and $args[1] == "on"){
-					$this->EntityLevelChangeEvent->set("e", true);
-					$this->EntityLevelChangeEvent->save();
+					$this->EntityLevelChangeEvent1 = true;
 				}
 					if($args[0] == "elce" and $args[1] == "off"){
-					$this->EntityLevelChangeEvent->set("e", false);
-					$this->EntityLevelChangeEvent->save();
+					$this->EntityLevelChangeEvent1 = false;
 				}
 						        if($args[0] == "eme" and $args[1] == "on"){
-					$this->EntityMoveEvent->set("e", true);
-					$this->EntityMoveEvent->save();
+					$this->EntityMoveEvent1 = true;
 				}
 					if($args[0] == "eme" and $args[1] == "off"){
-					$this->EntityMoveEvent->set("e", false);
-					$this->EntityMoveEvent->save();
+					$this->EntityMoveEvent1 = false;
 				}
 							        if($args[0] == "erhe" and $args[1] == "on"){
-					$this->EntityRegainHealthEvent->set("e", true);
-					$this->EntityRegainHealthEvent->save();
+					$this->EntityRegainHealthEvent1 = true;
 				}
 					if($args[0] == "erhe" and $args[1] == "off"){
-					$this->EntityRegainHealthEvent->set("e", false);
-					$this->EntityRegainHealthEvent->save();
+					$this->EntityRegainHealthEvent1 = false;
 				}
 							        if($args[0] == "ete" and $args[1] == "on"){
-					$this->EntityEvent->set("e", true);
-					$this->EntityMoveEvent->save();
+					$this->EntityTeleportEvent1 = true;
 				}
 					if($args[0] == "ete" and $args[1] == "off"){
-					$this->EntityMoveEvent->set("e", false);
-					$this->EntityMoveEvent->save();
+				$this->EntityTeleportEvent1 = false;
 				}
+							        if($args[0] == "ice" and $args[1] == "on"){
+					$this->InventoryCloseEvent1 = true;
+				}
+					if($args[0] == "ice" and $args[1] == "off"){
+				$this->InventoryCloseEvent1 = false;
+				}			        if($args[0] == "ioe" and $args[1] == "on"){
+				$this->InventoryOpenEvent1 = true;
+				}
+					if($args[0] == "ioe" and $args[1] == "off"){
+				$this->InventoryOpenEvent1 = false;
+				}
+							        if($args[0] == "ipie" and $args[1] == "on"){
+					$this->InventoryPickupItemEvent1 = true;
+				}
+					if($args[0] == "ipie" and $args[1] == "off"){
+				$this->InventoryPickupItemEvent1 = false;
+				}
+							        if($args[0] == "sce" and $args[1] == "on"){
+					$this->SpawnChangeEvent1 = true;
+				}
+					if($args[0] == "sce" and $args[1] == "off"){
+				$this->SpawnChangeEvent1 = false;
+				}
+								        if($args[0] == "lle" and $args[1] == "on"){
+					$this->LevelLoadEvent1 = true;
+				}
+					if($args[0] == "lle" and $args[1] == "off"){
+				$this->LevelLoadEvent1 = false;
+				}
+								        if($args[0] == "lue" and $args[1] == "on"){
+					$this->LevelUnloadEvent1 = true;
+				}
+					if($args[0] == "lue" and $args[1] == "off"){
+				$this->LevelUnloadEvent1 = false;
+				}
+								        if($args[0] == "lse" and $args[1] == "on"){
+					$this->LevelSaveEvent1 = true;
+				}
+					if($args[0] == "lse" and $args[1] == "off"){
+				$this->LevelSaveEvent1 = false;
+				}
+								        if($args[0] == "lie" and $args[1] == "on"){
+					$this->LevelInitEvent1 = true;
+				}
+					if($args[0] == "lie" and $args[1] == "off"){
+				$this->LevelInitEvent1 = false;
+				}
+								        if($args[0] == "paae" and $args[1] == "on"){
+					$this->PlayerAchievementAwardedEvent1 = true;
+				}
+					if($args[0] == "paae" and $args[1] == "off"){
+				$this->PlayerAchievementAwardedEvent1 = false;
+				}
+								        if($args[0] == "pae" and $args[1] == "on"){
+					$this->PlayerAnimationEvent1 = true;
+				}
+					if($args[0] == "pae" and $args[1] == "off"){
+				$this->PlayerAnimationEvent1 = false;
+				}
+								        if($args[0] == "pce" and $args[1] == "on"){
+					$this->PlayerChatEvent1 = true;
+				}
+					if($args[0] == "pce" and $args[1] == "off"){
+				$this->PlayerChatEvent1 = false;
+				}
+								        if($args[0] == "pcpe" and $args[1] == "on"){
+					$this->PlayerCommandPreprocessEvent1 = true;
+				}
+					if($args[0] == "pcpe" and $args[1] == "off"){
+			$this->PlayerCommandPreprocessEvent1 = false;
+				}
+								        if($args[0] == "pde" and $args[1] == "on"){
+					$this->PlayerDeathEvent1 = true;
+				}
+					if($args[0] == "pde" and $args[1] == "off"){
+				$this->PlayerDeathEvent1 = false;
+				}
+								        if($args[0] == "pdie" and $args[1] == "on"){
+				$this->PlayerDropItemEvent1 = true;
+				}
+					if($args[0] == "pdie" and $args[1] == "off"){
+				$this->PlayerDropItemEvent1 = false;
+				}
+									        if($args[0] == "pgce" and $args[1] == "on"){
+			$this->PlayerGameModeChangeEvent1 = true;
+				}
+					if($args[0] == "pgce" and $args[1] == "off"){
+				$this->PlayerGameModeChangeEvent1 = false;
+				}
+									        if($args[0] == "pie" and $args[1] == "on"){
+				$this->PlayerInteractEvent1 = true;
+				}
+					if($args[0] == "pie" and $args[1] == "off"){
+				$this->PlayerInteractEvent1 = false;
+				}
+									        if($args[0] == "pice" and $args[1] == "on"){
+				$this->PlayerItemConsumeEvent1 = true;
+				}
+					if($args[0] == "pice" and $args[1] == "off"){
+				$this->PlayerItemConsumeEvent1 = false;
+				}
+									        if($args[0] == "pje" and $args[1] == "on"){
+				$this->PlayerJoinEvent1 = true;
+				}
+					if($args[0] == "pje" and $args[1] == "off"){
+				$this->PlayerJoinEvent1 = false;
+				}
+									        if($args[0] == "pke" and $args[1] == "on"){
+				$this->PlayerKickEvent1 = true;
+				}
+					if($args[0] == "pke" and $args[1] == "off"){
+				$this->PlayerKickEvent1 = false;
+				}
+									        if($args[0] == "ple" and $args[1] == "on"){
+				$this->PlayerLoginEvent1 = true;
+				}
+					if($args[0] == "ple" and $args[1] == "off"){
+				$this->PlayerLoginEvent1 = false;
+				}
+									        if($args[0] == "pple" and $args[1] == "on"){
+				$this->PlayerPreLoginEvent1 = true;
+				}
+					if($args[0] == "pple" and $args[1] == "off"){
+				$this->PlayerPreLoginEvent1 = false;
+				}
+									        if($args[0] == "pdie" and $args[1] == "on"){
+				$this->PlayerDropItemEvent1 = true;
+				}
+					if($args[0] == "pple" and $args[1] == "off"){
+				$this->PlayerPreLoginEvent1 = false;
+				}
+									        if($args[0] == "pqe" and $args[1] == "on"){
+				$this->PlayerQuitEvent1 = true;
+				}
+					if($args[0] == "pqe" and $args[1] == "off"){
+				$this->PlayerQuitEvent1 = false;
+				}
+									        if($args[0] == "pre" and $args[1] == "on"){
+				$this->PlayerRespawnEvent1 = true;
+				}
+					if($args[0] == "pre" and $args[1] == "off"){
+				$this->PlayerRespawnEvent1 = false;
+				}
+									        if($args[0] == "pde" and $args[1] == "on"){
+				$this->PluginDisableEvent1 = true;
+				}
+					if($args[0] == "pde" and $args[1] == "off"){
+				$this->PluginDisableEvent1 = false;
+				}
+									        if($args[0] == "pee" and $args[1] == "on"){
+				$this->PluginEnableEvent1 = true;
+				}
+					if($args[0] == "pee" and $args[1] == "off"){
+				$this->PluginEnableEvent1 = false;
+				}
+									        if($args[0] == "dpre" and $args[1] == "on"){
+				$this->DataPacketReceiveEvent1 = true;
+				}
+					if($args[0] == "dpre" and $args[1] == "off"){
+				$this->DataPacketReceiveEvent1 = false;
+				}
+									        if($args[0] == "dpse" and $args[1] == "on"){
+				$this->DataPacketSendEvent1 = true;
+				}
+					if($args[0] == "dpse" and $args[1] == "off"){
+				$this->DataPacketSendEvent1 = false;
+				}
+									        if($args[0] == "sce" and $args[1] == "on"){
+				$this->ServerCommandEvent1 = true;
+				}
+					if($args[0] == "sce" and $args[1] == "off"){
+				$this->ServerCommandEvent1 = false;
+				}
+									        if($args[0] == "eace" and $args[1] == "on"){
+				$this->EntityArmorChangeEvent1 = true;
+				}
+					if($args[0] == "eace" and $args[1] == "off"){
+				$this->EntityArmorChangeEvent1 = false;
+				}
+									        if($args[0] == "edse" and $args[1] == "on"){
+				$this->EntityDespawnEvent1 = true;
+				}
+					if($args[0] == "edse" and $args[1] == "off"){
+				$this->EntityDespawnEvent1 = false;
+				}
+									        if($args[0] == "eee" and $args[1] == "on"){
+				$this->EntityExplodeEvent1 = true;
+				}
+					if($args[0] == "eee" and $args[1] == "off"){
+				$this->EntityExplodeEvent1 = false;
+				}
+									        if($args[0] == "emoe" and $args[1] == "on"){
+				$this->EntityMotionEvent1 = true;
+				}
+					if($args[0] == "emoe" and $args[1] == "off"){
+				$this->EntityMotionEvent1 = false;
+				}
+									        if($args[0] == "ese" and $args[1] == "on"){
+				$this->EntitySpawnEvent1 = true;
+				}
+					if($args[0] == "ese" and $args[1] == "off"){
+				$this->EntitySpawnEvent1 = false;
+				}
+									        if($args[0] == "cie" and $args[1] == "on"){
+				$this->CraftItemEvent1 = true;
+				}
+					if($args[0] == "cie" and $args[1] == "off"){
+				$this->CraftItemEvent1 = false;
+				}
+				if($args[0] == "p"){
+					if($this->getServer()->getOfflinePlayer($args[1])->hasPlayedBefore() == true){
+						
+					}
+				}
+		
+		
+		
+				
 				
 				
 				
