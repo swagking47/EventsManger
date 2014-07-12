@@ -151,18 +151,22 @@ $this->CraftItemEvent1 = true;
 		public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
 		switch($cmd->getName()){
 			case "eventmanger":
-				if($args[0] == "bbe" and $args[1] == "on"){
+				if($args[0] == "bbe"){
+					$this->BlockBreakEvent1 = false;
+				elseif($this->BlockBreakEvent1 = false){
 					$this->BlockBreakEvent1 = true;
+				}	
+				}
 					
 				}
-					if($args[0] == "bbe" and $args[1] == "off"){
-					$this->BlockBreakEvent1 = false;
-				}
-				if($args[0] == "bpe" and $args[1] == "on"){
+				if($args[0] == "bpe"){
+				$this->BlockPlaceEvent1 = false;
+				elseif($this->BlockPlaceEvent1 = false){
 					$this->BlockPlaceEvent1 = true;
 				}
-					if($args[0] == "bpe" and $args[1] == "off"){
-					$this->BlockPlaceEvent1 = false;
+				if(isset($args[1])){
+				$this->BlockPlaceEvent->set($args[1])	
+				}
 				}
 				if($args[0] == "edbe" and $args[1] == "on"){
 					$this->EntityDamageByEntityEvent1 = true;
@@ -420,6 +424,7 @@ $this->CraftItemEvent1 = true;
 						
 					}
 				}
+
 		
 		
 		
