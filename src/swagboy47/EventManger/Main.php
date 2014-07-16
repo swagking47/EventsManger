@@ -63,7 +63,7 @@ $this->BlockBreakEvent = new Config($this->getDataFolder()."BlockBreakEvent.yml"
         "blocks" => []
 	"items" => []
 	"player" => []
-	"enable" => true
+	"level" => []
 	));
 $this->BlockPlaceEvent = new Config($this->getDataFolder()."BlockPlaceEvent.yml", Config::YAML, array(
 		"player" => []
@@ -71,39 +71,50 @@ $this->BlockPlaceEvent = new Config($this->getDataFolder()."BlockPlaceEvent.yml"
 		"item" => []
 		"BlockReplaced" => []
 		"BlockAgainst" => []
+	        "level" => []
 		));
 $this->EntityDamageByEntityEvent = new Config($this->getDataFolder()."EntityDamageByEntityEvent.yml", Config::YAML, array(
 	"damegedentity" => []
 	"damger" => []
 	"damage" => []
 	"player" => []
+	"level" => []
 	));		
 $this->EntityDamageEvent = new Config($this->getDataFolder()."EntityDamageEvent.yml", Config::YAML, array(
 	"Cause" => []
 	"Odamge" => []
 	"Damage" => []
 	"Fdamge" =>[]
-	"player" => []));				
+	"player" => []
+	"level" => []
+	));				
 $this->EntityDeathEvent = new Config($this->getDataFolder()."EntityDeathEvent.yml", Config::YAML, array(
 	"Entity" => []
 	"Drops" => []
 	"player" => []
+	"level" => []
 	));
 $this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelChangeEvent.yml", Config::YAML, array(
         "Orgin" => []
         "target" => []
         "player" => []
-        "Entity" => []));	
+        "Entity" => []
+        "level" => []
+        ));	
 $this->EntityMoveEvent = new Config($this->getDataFolder()."EntityMoveEvent.yml", Config::YAML, array(
 	"X" => []
 	"Y" => []
 	"Z" => []
 	"Entity" => []
-	"player" => []));	
+	"player" => []
+	"level" => []
+	));	
 $this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array(
 	"Amount" => []
 	"Entity" => []
-	"player" => []));	
+	"player" => []
+	"level" => []
+	));	
 $this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEvent.yml", Config::YAML, array(
 	"From" => [
 		"x" => []
@@ -115,17 +126,24 @@ $this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEv
 		"y" => []
 		"z" => []
 		]
+	"level" => []
+		"entity" => []
+"player" => []
 		));
 $this->InventoryCloseEvent = new Config($this->getDataFolder()."InventoryCloseEvent.yml", Config::YAML, array(
 	"player" => []
 	"inventory" => []
+	"level" => []
 	));
 $this->InventoryOpenEvent = new Config($this->getDataFolder()."InventoryOpenEvent.yml", Config::YAML, array(
 	"player" => []
 	"inventory" => []
+	"level" => []
 	));
 $this->InventoryPickupItemEvent = new Config($this->getDataFolder()."InventoryPickupItemEvent.yml", Config::YAML, array(
-	"item" => []));
+	"item" => []
+	"level" => []
+	));
 $this->SpawnChangeEvent = new Config($this->getDataFolder()."SpawnChangeEvent.yml", Config::YAML, array());
 $this->LevelLoadEvent = new Config($this->getDataFolder()."LevelLoadEvent.yml", Config::YAML, array());
 $this->LevelUnLoadEvent = new Config($this->getDataFolder()."LevelUnLoadEvent.yml", Config::YAML, array());
