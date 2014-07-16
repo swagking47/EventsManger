@@ -8,6 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\math\Vector3;
 use pocketmine\Server;
 use pocketmine\utils\Config;
 use pocketmine\event\block\BlockBreakEvent;
@@ -57,18 +58,74 @@ use pocketmine\event\server\ServerCommandEvent;
 
 class Main extends PluginBase implements Listener{
 public function onEnable(){
-$this->BlockBreakEvent = new Config($this->getDataFolder()."BlockBreakEvent.yml", Config::YAML, array());
-$this->BlockPlaceEvent = new Config($this->getDataFolder()."BlockPlaceEvent.yml", Config::YAML, array());
-$this->EntityDamageByEntityEvent = new Config($this->getDataFolder()."EntityDamageByEntityEvent.yml", Config::YAML, array());		
-$this->EntityDamageEvent = new Config($this->getDataFolder()."EntityDamageEvent.yml", Config::YAML, array());				
-$this->EntityDeathEvent = new Config($this->getDataFolder()."EntityDeathEvent.yml", Config::YAML, array());
-$this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelChangeEvent.yml", Config::YAML, array());	
-$this->EntityMoveEvent = new Config($this->getDataFolder()."EntityMoveEvent.yml", Config::YAML, array());	
-$this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array());	
-$this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEvent.yml", Config::YAML, array());
-$this->InventoryCloseEvent = new Config($this->getDataFolder()."InventoryCloseEvent.yml", Config::YAML, array());
-$this->InventoryOpenEvent = new Config($this->getDataFolder()."InventoryOpenEvent.yml", Config::YAML, array());
-$this->InventoryPickupItemEvent = new Config($this->getDataFolder()."InventoryPickupItemEvent.yml", Config::YAML, array();
+	 @mkdir($this->getDataFolder());
+$this->BlockBreakEvent = new Config($this->getDataFolder()."BlockBreakEvent.yml", Config::YAML, array(
+        "blocks" => []
+	"items" => []
+	"player" => []
+	"enable" => true
+	));
+$this->BlockPlaceEvent = new Config($this->getDataFolder()."BlockPlaceEvent.yml", Config::YAML, array(
+		"player" => []
+		"blocks" => []
+		"item" => []
+		"BlockReplaced" => []
+		"BlockAgainst" => []
+		));
+$this->EntityDamageByEntityEvent = new Config($this->getDataFolder()."EntityDamageByEntityEvent.yml", Config::YAML, array(
+	"damegedentity" => []
+	"damger" => []
+	"damage" => []
+	"player" => []
+	));		
+$this->EntityDamageEvent = new Config($this->getDataFolder()."EntityDamageEvent.yml", Config::YAML, array(
+	"Cause" => []
+	"Odamge" => []
+	"Damage" => []
+	"Fdamge" =>[]
+	"player" => []));				
+$this->EntityDeathEvent = new Config($this->getDataFolder()."EntityDeathEvent.yml", Config::YAML, array(
+	"Entity" => []
+	"Drops" => []
+	"player" => []
+	));
+$this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelChangeEvent.yml", Config::YAML, array(
+        "Orgin" => []
+        "target" => []
+        "player" => []
+        "Entity" => []));	
+$this->EntityMoveEvent = new Config($this->getDataFolder()."EntityMoveEvent.yml", Config::YAML, array(
+	"X" => []
+	"Y" => []
+	"Z" => []
+	"Entity" => []
+	"player" => []));	
+$this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array(
+	"Amount" => []
+	"Entity" => []
+	"player" => []));	
+$this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEvent.yml", Config::YAML, array(
+	"From" => [
+		"x" => []
+		"y" => []
+		"z" => []
+		]
+		"To" => [
+	        "x" => []
+		"y" => []
+		"z" => []
+		]
+		));
+$this->InventoryCloseEvent = new Config($this->getDataFolder()."InventoryCloseEvent.yml", Config::YAML, array(
+	"player" => []
+	"inventory" => []
+	));
+$this->InventoryOpenEvent = new Config($this->getDataFolder()."InventoryOpenEvent.yml", Config::YAML, array(
+	"player" => []
+	"inventory" => []
+	));
+$this->InventoryPickupItemEvent = new Config($this->getDataFolder()."InventoryPickupItemEvent.yml", Config::YAML, array(
+	"item" => []));
 $this->SpawnChangeEvent = new Config($this->getDataFolder()."SpawnChangeEvent.yml", Config::YAML, array());
 $this->LevelLoadEvent = new Config($this->getDataFolder()."LevelLoadEvent.yml", Config::YAML, array());
 $this->LevelUnLoadEvent = new Config($this->getDataFolder()."LevelUnLoadEvent.yml", Config::YAML, array());
@@ -158,8 +215,13 @@ $this->CraftItemEvent1 = true;
 				if($this->BlockBreakEvent1 = false){
 					$this->BlockBreakEvent1 = true;
 				}
-				if(isset($args[1])){
-		               $player = $this->getServer()->getPlayer($args[1]);
+				if($args[1] == "block"){
+					if(isset($args[2])){
+		                $block = $args[2]
+		                if(!is_numeric($block)){
+		                $sender->sendMessage("this is not an ID of a block");	
+		                }
+		              
 		               if($player === null){
 				$sender->sendMessage("Can't find player " . $args[1]);
 		               }
