@@ -102,6 +102,8 @@ $this->EntitySpawnEvent = new Config($this->getDataFolder()."EntitySpawnEvent.ym
 $this->CraftItemEvent = new Config($this->getDataFolder()."CraftItemEvent.yml", Config::YAML, array());
 $this->PlayerItemHeldEvent = new Config($this->getDataFolder()."PlayerItemHeldEvent.yml", Config::YAML, array());
 $this->BlockBreakEvent1 = true;
+$this->Damger = true;
+$this->entityDamged = true;
 $this->BlockPlaceEvent1 = true;
 $this->EntityDamageByEntityEvent1 = true;
 $this->EntityDamageEvent1 = true;
@@ -153,26 +155,80 @@ $this->CraftItemEvent1 = true;
 			case "eventmanger":
 				if($args[0] == "bbe"){
 					$this->BlockBreakEvent1 = false;
-				elseif($this->BlockBreakEvent1 = false){
+				if($this->BlockBreakEvent1 = false){
 					$this->BlockBreakEvent1 = true;
-				}	
-				}
-					
-				}
-				if($args[0] == "bpe"){
-				$this->BlockPlaceEvent1 = false;
-				elseif($this->BlockPlaceEvent1 = false){
-					$this->BlockPlaceEvent1 = true;
 				}
 				if(isset($args[1])){
-				$this->BlockPlaceEvent->set($args[1])	
+		               $player = $this->getServer()->getPlayer($args[1]);
+		               if($player === null){
+				$sender->sendMessage("Can't find player " . $args[1]);
+		               }
+				elseif($this->BlockPlaceEvent->exsits($player->getName())){
+				$this->BlockBreakEvent->remove($player->getName());
+				$sender->sendMessage("BlockBreakEvent have been enalbed for" . $args[1]"!");
 				}
+				else{
+				$this->BlockBreakEvent->set($args[1]);	
+				$sender->sendMessage("BlockBreakEvent have been disalbed for" . $args[1]"!");
 				}
-				if($args[0] == "edbe" and $args[1] == "on"){
-					$this->EntityDamageByEntityEvent1 = true;
+		               }
+				}	
+				if($args[0] == "bpe"){
+				$this->BlockPlaceEvent1 = false;
+				if($this->BlockPlaceEvent1 = false){
+					$this->BlockPlaceEvent1 = true;
 				}
-					if($args[0] == "edbe" and $args[1] == "off"){
-					$this->EntityDamageByEntityEvent1 = false;
+				
+				if(isset($args[1])){
+		               $player = $this->getServer()->getPlayer($args[1]);
+		               if($player === null){
+				$sender->sendMessage("Can't find player " . $args[1]);
+		               }
+				elseif($this->BlockPlaceEvent->exsits($player->getName())){
+				$this->BlockPlaceEvent->remove($player->getName());
+				$sender->sendMessage("BlockPlaceEvent have been enalbed for" . $args[1]"!");
+				}
+				else{
+				$this->BlockPlaceEvent->set($args[1]);	
+				$sender->sendMessage("BlockPlaceEvent have been disalbed for" . $args[1]"!");
+				}
+		               }
+				}
+				if($args[0] == "edbe"){
+				$this->EntityDamageByEntityEvent1 = false;
+				if($this->EntityDamageByEntityEvent1 = false){
+				$this->EntityDamageByEntityEvent1 = true;
+				}
+				if($args[1] == "d"){
+					if(!isset($args[2])){
+				$this->Damger = false;
+					if($this->Damger = false){
+					$this->Damger = true;	
+				}
+					}
+					if()
+					
+				if(isset($args[1])){
+		               $ID = $args[1];
+		               if(is_numeric($ID)){
+		               	if(!$ID = 64 or 65 or 66 or 80 or 81 or 82 or 83 or 84 or 32 or 33 or 34 or 35 or 36 or 37 or 38 or 39 or 10 or 11 or 12 or 13 or 14 or 15 or 16 or 63){
+		               	$sender->sendMessage("BlockPlaceEvent have been disalbed for" . $args[1]"!");
+		               
+		               
+		               	
+		               
+				$sender->sendMessage("Can't find EntityID " . $args[1]);
+		               }
+				elseif($this->EntityDamageByEntityEvent1->exsits($player->getName())){
+				$this->EntityDamageByEntityEvent1->remove($player->getName());
+				$sender->sendMessage("EntityDamageByEntityEvent1 have been enalbed for" . $args[1]"!");
+				}
+				else{
+				$this->EntityDamageByEntityEvent1->set($args[1]);	
+				$sender->sendMessage("BlockBreakEvent have been disalbed for" . $args[1]"!");
+				}
+		               }
+				}
 				}
 				        if($args[0] == "ede" and $args[1] == "on"){
 					$this->EntityDamageEvent1 = true;
