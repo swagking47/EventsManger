@@ -88,12 +88,6 @@ $this->EntityDamageEvent = new Config($this->getDataFolder()."EntityDamageEvent.
 	"player" => []
 	"level" => []
 	));				
-$this->EntityDeathEvent = new Config($this->getDataFolder()."EntityDeathEvent.yml", Config::YAML, array(
-	"Entity" => []
-	"Drops" => []
-	"player" => []
-	"level" => []
-	));
 $this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelChangeEvent.yml", Config::YAML, array(
         "Orgin" => []
         "target" => []
@@ -210,9 +204,13 @@ $this->PlayerJoinEvent = new Config($this->getDataFolder()."PlayerJoinEvent.yml"
 $this->PlayerKickEvent = new Config($this->getDataFolder()."PlayerKickEvent.yml", Config::YAML, array(
 	"level" => []
 	"player" => []));
-$this->PlayerLoginEvent = new Config($this->getDataFolder()."PlayerLoginEvent.yml", Config::YAML, array());
-$this->PlayerPreLoginEvent = new Config($this->getDataFolder()."PlayerPreLoginEvent.yml", Config::YAML, array());
-$this->PlayerQuitEvent = new Config($this->getDataFolder()."PlayerQuitEvent.yml", Config::YAML, array());
+$this->PlayerLoginEvent = new Config($this->getDataFolder()."PlayerLoginEvent.yml", Config::YAML, array(
+	"player" => []
+	));
+$this->PlayerPreLoginEvent = new Config($this->getDataFolder()."PlayerPreLoginEvent.yml", Config::YAML, array(
+	"player" => []));
+$this->PlayerQuitEvent = new Config($this->getDataFolder()."PlayerQuitEvent.yml", Config::YAML, array(
+	"player" => []));
 $this->PlayerRespawnEvent = new Config($this->getDataFolder()."PlayerRespawnEvent.yml", Config::YAML, array());
 $this->PluginDisableEvent = new Config($this->getDataFolder()."PluginDisableEvent.yml", Config::YAML, array());
 $this->PluginEnableEvent = new Config($this->getDataFolder()."PluginEnableEvent.yml", Config::YAML, array());
