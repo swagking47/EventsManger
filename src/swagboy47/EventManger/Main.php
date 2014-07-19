@@ -85,14 +85,6 @@ $this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelCh
         "Entity" => []
         "level" => []
         ));	
-$this->EntityMoveEvent = new Config($this->getDataFolder()."EntityMoveEvent.yml", Config::YAML, array(
-	"X" => []
-	"Y" => []
-	"Z" => []
-	"Entity" => []
-	"player" => []
-	"level" => []
-	));	
 $this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array(
 	"player" => []
 	"level" => []
