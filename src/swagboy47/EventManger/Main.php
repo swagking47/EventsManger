@@ -67,19 +67,9 @@ $this->BlockBreakEvent = new Config($this->getDataFolder()."BlockBreakEvent.yml"
 	));
 $this->BlockPlaceEvent = new Config($this->getDataFolder()."BlockPlaceEvent.yml", Config::YAML, array(
 		"player" => []
-		"blocks" => []
-		"item" => []
-		"BlockReplaced" => []
-		"BlockAgainst" => []
+		"block" => []
 	        "level" => []
 		));
-$this->EntityDamageByEntityEvent = new Config($this->getDataFolder()."EntityDamageByEntityEvent.yml", Config::YAML, array(
-	"damegedentity" => []
-	"damger" => []
-	"damage" => []
-	"player" => []
-	"level" => []
-	));		
 $this->EntityDamageEvent = new Config($this->getDataFolder()."EntityDamageEvent.yml", Config::YAML, array(
 	"Cause" => []
 	"Odamge" => []
@@ -104,46 +94,15 @@ $this->EntityMoveEvent = new Config($this->getDataFolder()."EntityMoveEvent.yml"
 	"level" => []
 	));	
 $this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array(
-	"Amount" => []
-	"Entity" => []
 	"player" => []
 	"level" => []
 	));	
 $this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEvent.yml", Config::YAML, array(
-	"From" => [
-		"x" => []
-		"y" => []
-		"z" => []
-		]
-		"To" => [
-	        "x" => []
-		"y" => []
-		"z" => []
-		]
 	"level" => []
-		"entity" => []
 "player" => []
 		));
-$this->InventoryCloseEvent = new Config($this->getDataFolder()."InventoryCloseEvent.yml", Config::YAML, array(
-	"player" => []
-	"inventory" => []
-	"level" => []
-	));
-$this->InventoryOpenEvent = new Config($this->getDataFolder()."InventoryOpenEvent.yml", Config::YAML, array(
-	"player" => []
-	"inventory" => []
-	"level" => []
-	));
 $this->InventoryPickupItemEvent = new Config($this->getDataFolder()."InventoryPickupItemEvent.yml", Config::YAML, array(
 	"item" => []
-	"level" => []
-	));
-$this->SpawnChangeEvent = new Config($this->getDataFolder()."SpawnChangeEvent.yml", Config::YAML, array(
-	"preSpawn" => [
-		"x" => []
-		"y" => []
-		"z" => []
-		]
 	"level" => []
 	));
 $this->LevelLoadEvent = new Config($this->getDataFolder()."LevelLoadEvent.yml", Config::YAML, array(
@@ -160,11 +119,6 @@ $this->PlayerAchievementAwardedEvent = new Config($this->getDataFolder()."Player
 		"player" => []
 			"achievementID" => []
 			"level" => []));
-$this->PlayerAnimationEvent = new Config($this->getDataFolder()."PlayerAnimationEvent.yml", Config::YAML, array(
-		"Animationtype" => []
-			"player" => []
-			"level" => []
-	));
 $this->PlayerChatEvent = new Config($this->getDataFolder()."PlayerChatEvent.yml", Config::YAML, array(
 		"massage" => []
 			"player" => []
@@ -175,9 +129,6 @@ $this->PlayerCommandPreprocessEvent = new Config($this->getDataFolder()."PlayerC
 		"command" => []
 		"level" => []
 	));
-$this->PlayerDeathEvent = new Config($this->getDataFolder()."PlayerDeathEvent.yml", Config::YAML, array(
-	"player" => []
-	"level" => []));
 $this->PlayerDropItemEvent = new Config($this->getDataFolder()."PlayerDropItemEvent.yml", Config::YAML, array(
 	"items" => []
 	"player" => []
@@ -211,22 +162,12 @@ $this->PlayerPreLoginEvent = new Config($this->getDataFolder()."PlayerPreLoginEv
 	"player" => []));
 $this->PlayerQuitEvent = new Config($this->getDataFolder()."PlayerQuitEvent.yml", Config::YAML, array(
 	"player" => []));
-$this->PlayerRespawnEvent = new Config($this->getDataFolder()."PlayerRespawnEvent.yml", Config::YAML, array());
-$this->PluginDisableEvent = new Config($this->getDataFolder()."PluginDisableEvent.yml", Config::YAML, array());
-$this->PluginEnableEvent = new Config($this->getDataFolder()."PluginEnableEvent.yml", Config::YAML, array());
 $this->DataPacketReceiveEvent = new Config($this->getDataFolder()."DataPacketReceiveEvent.yml", Config::YAML, array());
 $this->DataPacketSendEvent = new Config($this->getDataFolder()."DataPacketSendEvent.yml", Config::YAML, array());
 $this->ServerCommandEvent = new Config($this->getDataFolder()."ServerCommandEvent.yml", Config::YAML, array());
-$this->EntityArmorChangeEvent = new Config($this->getDataFolder()."EntityArmorChangeEvent.yml", Config::YAML, array());
 $this->EntityDespawnEvent = new Config($this->getDataFolder()."EntityDespawnEvent.yml", Config::YAML, array());
-$this->EntityExplodeEvent = new Config($this->getDataFolder()."EntityExplodeEvent.yml", Config::YAML, array());
-$this->EntityMotionEvent = new Config($this->getDataFolder()."EntityMotionEvent.yml", Config::YAML, array());
-$this->EntitySpawnEvent = new Config($this->getDataFolder()."EntitySpawnEvent.yml", Config::YAML, array());
-$this->CraftItemEvent = new Config($this->getDataFolder()."CraftItemEvent.yml", Config::YAML, array());
 $this->PlayerItemHeldEvent = new Config($this->getDataFolder()."PlayerItemHeldEvent.yml", Config::YAML, array());
 $this->BlockBreakEvent1 = true;
-$this->Damger = true;
-$this->entityDamged = true;
 $this->BlockPlaceEvent1 = true;
 $this->EntityDamageByEntityEvent1 = true;
 $this->EntityDamageEvent1 = true;
@@ -273,54 +214,152 @@ $this->CraftItemEvent1 = true;
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		}
 		
-		public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
-		switch($cmd->getName()){
-			case "eventmanger":
+		public function onCommand(CommandSender $sender, Command $command, $label, array $args){
+		if(strtolower($command->getName()) == "eventmanger") {
 				if($args[0] == "bbe"){
 					$this->BlockBreakEvent1 = false;
+					$sender->sendMessage("[EventMannger] BlockBreakEvent is now Disabled!");
 				if($this->BlockBreakEvent1 = false){
+					$sender->sendMessage("[EventMannger] BlockBreakEvent is now Enabled!");
 					$this->BlockBreakEvent1 = true;
 				}
 				if($args[1] == "block"){
 					if(isset($args[2])){
 		                $block = $args[2]
 		                if(!is_numeric($block)){
-		                $sender->sendMessage("this is not an ID of a block");	
+		                $sender->sendMessage("[EventMannger]this is not an ID of a block");	
 		                }
-		              
-		               if($player === null){
-				$sender->sendMessage("Can't find player " . $args[1]);
-		               }
-				elseif($this->BlockPlaceEvent->exsits($player->getName())){
-				$this->BlockBreakEvent->remove($player->getName());
-				$sender->sendMessage("BlockBreakEvent have been enalbed for" . $args[1]"!");
+		              if(is_numeric($block)){
+		              	$array = $this->BlockBreakEvent->get("blocks");
+				array_push($array, $block);
+				$this->BlockBreakEvent->set("blocks", $array);
+				$sender->sendMessage("[EventMannger]Nobody is now allowed to break that block");
+		              }
+		              if(($BlockE = array_search($block, $array)) !== false){
+					unset($array[$BlockE]);
+					$this->BreakBlockEvent->set("blocks", $array);
+		              }
+					}
 				}
-				else{
-				$this->BlockBreakEvent->set($args[1]);	
-				$sender->sendMessage("BlockBreakEvent have been disalbed for" . $args[1]"!");
+		               if($args[1] == "player"){
+		               	if(isset($args[2])){
+		               $player = $this->getServer()->getPlayer($args[2]);
+		              if($player === null){
+		              	$sender->sendMessage("Can't find player " . $player->getName());
+		              }
+		              	 if(!$player === null){
+		              	$array = $this->BlockBreakEvent->get("players");
+				array_push($array, $player->getName);
+				$this->BlockBreakEvent->set("players", $array);
+				$sender->sendMessage("[EventMannger]player" . $player->getName() . "can't break any Blocks!");
+		              }
+		              if(($PLayerE = array_search($player->getName(), $array)) !== false){
+					unset($array[$PlayerE]);
+					$this->BreakBlockEvent->set("players", $array);
+						$sender->sendMessage("[EventMannger]player" . $player->getName() . "can now break Blocks!");
+		              }
+					}
 				}
+		               
+		               	if($args[1] == "item"){
+					if(isset($args[2])){
+				$item = $args[2]	
+		                if(!is_numeric($item)){
+		                $sender->sendMessage("[EventMannger]this is not an ID of a item");	
+		                }
+		              if(is_numeric($item)){
+		              	
+		              	$array = $this->BlockBreakEvent->get("items");
+				array_push($array, $item);
+				$this->BlockBreakEvent->set("items", $array);
+				$sender->sendMessage("[EventMannger]Nobody is now allowed to break block with that item");
+		              }
+		              if(($ItemE = array_search($item, $array)) !== false){
+					unset($array[$itemE]);
+					$this->BreakBlockEvent->set("items", $array);
+		              }
+					}
+				}
+					if($args[1] == "world"){
+					if(isset($args[2])){
+				$world = $args[2];
+		               if(!$this->getServer()->isLevelLoaded($world)){
+				$sender->sendMessage("[EventMannger]world" . $world . "is not found!");
 		               }
-				}	
+			if($this->getServer()->isLevelLoaded($world)){
+			$array = $this->BlockBreakEvent->get("levels");
+				array_push($array, $world);
+				$this->BlockBreakEvent->set("levels", $array);
+				$sender->sendMessage("[EventMannger]players can't break blocks at " . $world);
+		              }
+		              if(($WolrdE = array_search($world, $array)) !== false){
+					unset($array[$WolrdE]);
+					$this->BreakBlockEvent->set("levels", $array);
+						$sender->sendMessage("[EventMannger]players now can break blocks at " . $world);
+		              }
+					}
+				}
+				}
 				if($args[0] == "bpe"){
 				$this->BlockPlaceEvent1 = false;
 				if($this->BlockPlaceEvent1 = false){
 					$this->BlockPlaceEvent1 = true;
 				}
 				
-				if(isset($args[1])){
-		               $player = $this->getServer()->getPlayer($args[1]);
-		               if($player === null){
-				$sender->sendMessage("Can't find player " . $args[1]);
-		               }
-				elseif($this->BlockPlaceEvent->exsits($player->getName())){
-				$this->BlockPlaceEvent->remove($player->getName());
-				$sender->sendMessage("BlockPlaceEvent have been enalbed for" . $args[1]"!");
+				if($args[1] == "block"){
+					if(isset($args[2])){
+		                $block = $args[2]
+		                if(!is_numeric($block)){
+		                $sender->sendMessage("[EventMannger]this is not an ID of a block");	
+		                }
+		              if(is_numeric($block)){
+		              	$array = $this->BlockPlaceEvent->get("blocks");
+				array_push($array, $block);
+				$this->BlockBreakEvent->set("blocks", $array);
+				$sender->sendMessage("[EventMannger]Nobody is now allowed to place that block");
+		              }
+		              if(($BlockE = array_search($block, $array)) !== false){
+					unset($array[$BlockE]);
+					$this->BreakPlaceEvent->set("blocks", $array);
+		              }
+					}
 				}
-				else{
-				$this->BlockPlaceEvent->set($args[1]);	
-				$sender->sendMessage("BlockPlaceEvent have been disalbed for" . $args[1]"!");
+				if($args[1] == "player"){
+		               	if(isset($args[2])){
+		               $player = $this->getServer()->getPlayer($args[2]);
+		              if($player === null){
+		              	$sender->sendMessage("[EventManger]Can't find player " . $player->getName());
+		              }
+		              	 if(!$player === null){
+		              	$array = $this->BlockPlaceEvent->get("players");
+				array_push($array, $player->getName);
+				$this->BlockPlaceEvent->set("players", $array);
+				$sender->sendMessage("[EventMannger]player" . $player->getName() . "can't place any Blocks!");
+		              }
+		              if(($PLayerE = array_search($player->getName(), $array)) !== false){
+					unset($array[$PlayerE]);
+					$this->BreakPlaceEvent->set("players", $array);
+						$sender->sendMessage("[EventMannger]player" . $player->getName() . "can now place Blocks!");
+		              }
+					}
 				}
-		               }
+				if($args[1] == "blocka"){
+					if(isset($args[2])){
+		                $block = $args[2]
+		                if(!is_numeric($block)){
+		                $sender->sendMessage("[EventMannger]this is not an ID of a block");	
+		                }
+		              if(is_numeric($block)){
+		              	$array = $this->BlockPlaceEvent->get("blocksAgainst");
+				array_push($array, $block);
+				$this->BlockBreakEvent->set("blocksAgainst", $array);
+				$sender->sendMessage("[EventMannger]Nobody is now allowed to place that block");
+		              }
+		              if(($BlockE = array_search($block, $array)) !== false){
+					unset($array[$BlockE]);
+					$this->BreakPlaceEvent->set("blocks", $array);
+		              }
+					}
 				}
 				if($args[0] == "edbe"){
 				$this->EntityDamageByEntityEvent1 = false;
