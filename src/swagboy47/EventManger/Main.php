@@ -88,9 +88,11 @@ $this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelCh
 $this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array(
 	"player" => []
 	"level" => []
+	"Amount" => []
 	));	
 $this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEvent.yml", Config::YAML, array(
 	"level" => []
+	"EID" => []
 "player" => []
 		));
 $this->InventoryPickupItemEvent = new Config($this->getDataFolder()."InventoryPickupItemEvent.yml", Config::YAML, array(
