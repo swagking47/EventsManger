@@ -1,7 +1,7 @@
 <?php
- 
+
  namespace swagboy47\EventManger;
- 
+
 use pocketmine\command\Command;
 use pocketmine\command\CommandExecutor;
 use pocketmine\command\CommandSender;
@@ -48,237 +48,77 @@ use pocketmine\event\server\ServerCommandEvent;
 class Main extends PluginBase implements Listener{
 public function onEnable(){
 	 @mkdir($this->getDataFolder());
-$this->BlockBreakEvent = new Config($this->getDataFolder()."BlockBreakEvent.yml", Config::YAML, array(
-        "blocks" => []
-	"items" => []
-	"player" => []
-	"level" => []
-	));
-$this->BlockPlaceEvent = new Config($this->getDataFolder()."BlockPlaceEvent.yml", Config::YAML, array(
-		"player" => []
-		"block" => []
-		"Blocka" => []
-	    "level" => []
-		));
-$this->EntityDamageByEntityEvent = new Config($this->getDataFolder()."EntityDamageEvent.yml", Config::YAML, array(
-	"EPlayer" => []
-	"DPlayer" => []
-	"Damage" => []
-	"level" => []
-	));		
-$this->EntityDamageEvent = new Config($this->getDataFolder()."EntityDamageEvent.yml", Config::YAML, array(
-	"Cause" => []
-	"Odamge" => []
-	"Damage" => []
-	"Fdamge" =>[]
-	"player" => []
-	"level" => []
-	));				
-$this->EntityLevelChangeEvent = new Config($this->getDataFolder()."EntityLevelChangeEvent.yml", Config::YAML, array(
-        "Orgin" => []
-        "target" => []
-        "player" => []
-        "level" => []
-        ));	
-$this->EntityRegainHealthEvent = new Config($this->getDataFolder()."EntityRegainHealthEvent.yml", Config::YAML, array(
-	"player" => []
-	"level" => []
-	"Amount" => []
-	));	
-$this->EntityTeleportEvent = new Config($this->getDataFolder()."EntityTeleportEvent.yml", Config::YAML, array(
-	"level" => []
-    "player" => []
-		));
-$this->InventoryPickupItemEvent = new Config($this->getDataFolder()."InventoryPickupItemEvent.yml", Config::YAML, array(
-	"item" => []
-	"level" => []
-	));
-$this->LevelLoadEvent = new Config($this->getDataFolder()."LevelLoadEvent.yml", Config::YAML, array(
-	"level" => []	));
-$this->LevelUnLoadEvent = new Config($this->getDataFolder()."LevelUnLoadEvent.yml", Config::YAML, array(
-		"level" => []
-		));
-$this->LevelSaveEvent = new Config($this->getDataFolder()."LevelSaveEvent.yml", Config::YAML, array(
-		"level" => []));
-$this->LevelInitEvent = new Config($this->getDataFolder()."LevelInitEvent.yml", Config::YAML, array(
-		"level" => []
-		));
-$this->PlayerAchievementAwardedEvent = new Config($this->getDataFolder()."PlayerAchievementAwardedEvent.yml", Config::YAML, array(
-		"player" => []
-			"achievementID" => []
-			"level" => []));
-$this->PlayerChatEvent = new Config($this->getDataFolder()."PlayerChatEvent.yml", Config::YAML, array(
-		"massage" => []
-			"player" => []
-			"level" => []
-	));	
-$this->PlayerCommandPreprocessEvent = new Config($this->getDataFolder()."PlayerCommandPreprocessEvent.yml", Config::YAML, array(
-		"player" => []
-		"command" => []
-		"level" => []
-	));
-$this->PlayerDropItemEvent = new Config($this->getDataFolder()."PlayerDropItemEvent.yml", Config::YAML, array(
-	"items" => []
-	"player" => []
-	"level" => []));
-$this->PlayerGameModeChangeEvent = new Config($this->getDataFolder()."PlayerGameModeChangeEvent.yml", Config::YAML, array(
-	"newGM" => []
-	"player" => []
-	"level" => []
-	"oldGM" => []
-	));
-$this->PlayerInteractEvent = new Config($this->getDataFolder()."PlayerInteractEvent.yml", Config::YAML, array(
-	"items" => []
-	"player" => []
-	"level" => []
-	"blocks" => []
-	"faces" => []));
-$this->PlayerItemConsumeEvent = new Config($this->getDataFolder()."PlayerItemConsumeEvent.yml", Config::YAML, array(
-	"items" => []
-	"player" => []
-	"level" => []));
-$this->PlayerJoinEvent = new Config($this->getDataFolder()."PlayerJoinEvent.yml", Config::YAML, array(
-	"player" => []
-	));
-$this->PlayerKickEvent = new Config($this->getDataFolder()."PlayerKickEvent.yml", Config::YAML, array(
-	"level" => []
-	"player" => []));
-$this->PlayerLoginEvent = new Config($this->getDataFolder()."PlayerLoginEvent.yml", Config::YAML, array(
-	"player" => []
-	));
-$this->PlayerPreLoginEvent = new Config($this->getDataFolder()."PlayerPreLoginEvent.yml", Config::YAML, array(
-	"player" => []));
-$this->DataPacketReceiveEvent = new Config($this->getDataFolder()."DataPacketReceiveEvent.yml", Config::YAML, array(
-	"packets" => []));
-$this->DataPacketSendEvent = new Config($this->getDataFolder()."DataPacketSendEvent.yml", Config::YAML, array(
-	"packets" => []));
-$this->ServerCommandEvent = new Config($this->getDataFolder()."ServerCommandEvent.yml", Config::YAML, array(
-	"commands" => []));
-$this->EntityDespawnEvent = new Config($this->getDataFolder()."EntityDespawnEvent.yml", Config::YAML, array(
-    "player" => []
-	"level" => []));
-$this->EntitySpawnEvent = new Config($this->getDataFolder()."EntityDespawnEvent.yml", Config::YAML, array(
-"level" => []));
-$this->EntityMoveEvent = new Config($this->getDataFolder()."EntityMoveEvent.yml", Config::YAML, array(
-	"player" => []
-	"level" => []
-	));
-$this->EntityExplodeEvent = new Config($this->getDataFolder()."EntityExplodeEvent.yml", Config::YAML, array(
-	"level" => []
-	));
-$this->PlayerItemHeldEvent = new Config($this->getDataFolder()."PlayerItemHeldEvent.yml", Config::YAML, array(
-	"item" => []
-	"player" => []
-	"level" => []));
-$this->EntityMoveEvent->set("isCreature", true);
-$this->EntityMoveEvent->set("isHuman", true);
-$this->EntityMoveEvent->set("isProjectile", true);
-$this->EntityMoveEvent->set("Vehicle", true);
-$this->EntityMoveEvent->set("isItem", true);
-$this->EntityExplodeEvent->("TNTPrimed", true);
-$this->EntityExplodeEvent->("Creeper", true);
-$this->EntitySpawnEvent->set("isCreature", true);	
-$this->EntitySpawnEvent->set("isHuman", true);
-$this->EntitySpawnEvent->set("isProjectile", true);
-$this->EntitySpawnEvent->set("isVehicle", true);	
-$this->EntitySpawnEvent->set("isItem", true);
-$this->EntityDespawnEvent->set("isCreature", true);	
-$this->EntityDespawnEvent->set("isHuman", true);
-$this->EntityDespawnEvent->set("isProjectile", true);
-$this->EntityDespawnEvent->set("isVehicle", true);	
-$this->EntityDespawnEvent->set("isItem", true);			
-$this->EntityDamageByEntityEvent->set("EisCreature", true);
-$this->EntityDamageByEntityEvent->set("EisHuman", true);
-$this->EntityDamageByEntityEvent->set("DisCreature", true);
-$this->EntityDamageByEntityEvent->set("DisHuman", true);
-$this->EntityDamageEvent->set("isHuman", true);
-$this->EntityDamageEvent->set("isCreature", true);
-$this->EntityRegainHealthEvent("isCreature", true);
-$this->EntityRegainHealthEvent->set("isHuman", true);
-$this->EntityLevelChangeEvent->set("isCreature", true);
-$this->EntityLevelChangeEvent->set("isCreature", true);
-$this->EntityTeleportEvent->set("isCreature", true);
-$this->EntityTeleportEvent->set("isHuman", true);
-$this->EntityLevelChangeEvent
-$this->BlockBreakEvent1 = true;
-$this->BlockPlaceEvent1 = true;
-$this->EntityDamageByEntityEvent1 = true;
-$this->EntityDamageEvent1 = true;
-$this->EntityLevelChangeEvent1 = true;
-$this->EntityMoveEvent1 = true;
-$this->EntityRegainHealthEvent1 = true;
-$this->EntityTeleportEvent1 = true;
-$this->InventoryPickupItemEvent1 = true;
-$this->LevelLoadEvent1 = true;
-$this->LevelUnLoadEvent1 = true;
-$this->LevelSaveEvent1 = true;
-$this->LevelInitEvent1 = true;
-$this->PlayerAchievementAwardedEvent1 = true;
-$this->PlayerChatEvent1 = true;
-$this->PlayerCommandPreprocessEvent1 = true;
-$this->PlayerDropItemEvent1 = true;
-$this->PlayerGameModeChangeEvent1 = true;
-$this->PlayerInteractEvent1 = true;
-$this->PlayerItemConsumeEvent1 = true;
-$this->PlayerJoinEvent1 = true;
-$this->PlayerKickEvent1 = true;
-$this->PlayerLoginEvent1 = true;
-$this->PlayerPreLoginEvent1 = true;
-$this->PluginDisableEvent1 = true;
-$this->PluginEnableEvent1 = true;
-$this->DataPacketReceiveEvent1 = true;
-$this->DataPacketSendEvent1 = true;
-$this->ServerCommandEvent1 = true;
-$this->EntityDespawnEvent1 = true;
-$this->EntityExplodeEvent1 = true;
-$$this->EntitySpawnEvent1 = true;
-
-
+$this->BlockBreakEvent = [Blocks = []Items = []Players => []Levels => []Enable = [true]];
+$this->BlockPlaceEvent = [levels = []Blocks = []Players = []Enable = [true]];
+$this->EntityDamageByEntityEvent = [Players = []DPlayers = []Damage = []levels = []Enable = [true]];
+$this->EntityDamageEvent = [Causes = []Damages = []players = []levels = []Enable = [true]]	;
+$this->EntityLevelChangeEvent = [Orgins = []targets = []players = []Enable = [true]];
+$this->EntityRegainHealthEvent = [players = []levels = []Enable = [true]];
+$this->EntityTeleportEvent = [levels = []players = []Enable = [true]];
+$this->InventoryPickupItemEvent = [items = []levels = []Enable = [true]];
+$this->LevelLoadEvent = [levels = []Enable = [true]];
+$this->LevelUnLoadEvent = [levels = []Enable = [true]];
+$this->LevelSaveEvent = [levels = []Enable = [true]];
+$this->LevelInitEvent = [levels = []Enable = [true]];
+$this->PlayerAchievementAwardedEvent = [Players = []AchivementIDs = []levels = []Enable = [true]];
+$this->PlayerChatEvent = [Massage = []Players = []Levels = []Enable = [true]];
+$this->PlayerCommandPreprocessEvent = [Players = []Commands = []Levels = []Enable = [true]];
+$this->PlayerDropItemEvent = [Items = []Players = []Levels = []Enable = [true]];
+$this->PlayerGameModeChangeEvent = [NewGMs = []Players = []Levels = []OldGMs = []Enable = [true]];
+$this->PlayerInteractEvent = [Items = []Players = []Levels = []Blocks = []Faces = []Enable = [true]];
+$this->PlayerItemConsumeEvent = [Items = []Players = []Levels = []Enable = [true]];
+$this->PlayerKickEvent = [Levels = []Players = []Enable = [true]];
+$this->PlayerLoginEvent = [Players = []Enable = [true]];
+$this->PlayerPreLoginEvent = [Players = []Enable = [true]];
+$this->DataPacketReceiveEvent = [Packets = []Enable = [true]];
+$this->DataPacketSendEvent = [Packets = []Enable = [true]];
+$this->ServerCommandEvent = [Commands = []Enable = [true]];
+$this->EntityMoveEvent = [Players = []Levels = []Enable = [true]];
+$this->EntityExplodeEvent = [Levels = []Enable = [true]];
+$this->PlayerItemHeldEvent = [Items = []Players = []Level = []Enable = [true]];
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		}
 
 		public function onCommand(CommandSender $sender, Command $command, $label, array $args){
 		if(strtolower($command->getName()) == "eventmanger") {
 				if($args[0] == "bbe"){
-					$this->BlockBreakEvent1 = false;
-					$sender->sendMessage("[EventMannger] BlockBreakEvent is now Disabled!");
-				if($this->BlockBreakEvent1 = false){
+					 if(isset($this->BlockBreakEvent[Enable[false]])){
 					$sender->sendMessage("[EventMannger] BlockBreakEvent is now Enabled!");
-					$this->BlockBreakEvent1 = true;
-				}
+					$this->BlockBreakEvent[Enable[true]];
+				}else{
+					unset($this->BreakBlockEvent[$Enable[true]]);
+					 $this->BreakBlockEvent[Enable[false]];
+					$sender->sendMessage("[EventMannger] BlockBreakEvent is now Disabled!");
+					}
 				if($args[1] == "block"){
 					if(isset($args[2])){
 		                $block = $args[2]
-		                if(!is_numeric($block)){
-		                $sender->sendMessage("[EventMannger]this is not an ID of a block");	
+		                if(!is_numeric($block){
+		                $sender->sendMessage("[EventMannger]this is not an ID of a block");
 		                }
-		              if(is_numeric($block)){
-		              	$array = $this->BlockBreakEvent->get("blocks");
-				array_push($array, $block);
-				$this->BlockBreakEvent->set("blocks", $array);
+		              if(is_numeric($block) and !isset($this->BlockBreakEvent[Blocks[$block]])){
+		              	$this->BlockBreakEvent[Blocks[$block]];
 				$sender->sendMessage("[EventMannger]Nobody is now allowed to break that block");
 		              }
-		              if(($BlockE = array_search($block, $array)) !== false){
-					unset($array[$BlockE]);
-					$this->BreakBlockEvent->set("blocks", $array);
+		              if(isset($this->BlockBreakEvent[Blocks[$block]])){
+					unset($this->BreakBlockEvent[Blocks[$block]]);
+					$sender->sendMessage("[EventMannger]Everybody is now allowed to break that block");
 		              }
 					}
 				}
 		               if($args[1] == "player"){
 		               	if(isset($args[2])){
 		               $player = $this->getServer()->getPlayer($args[2]);
+		               $name = $player->getName()
 		              if($player === null){
-		              	$sender->sendMessage("Can't find player " . $player->getName());
+		              	$sender->sendMessage("Can't find player " . $name);
 		              }
-		              	 if(!$player === null){
-		              	$array = $this->BlockBreakEvent->get("players");
-				array_push($array, $player->getName);
-				$this->BlockBreakEvent->set("players", $array);
+		              	 if(!$player === null and !isset($this->BlockBreakEvent[Player[$name]])){
+		              	$this->BreakBlockEvent[Player[$name]];
 				$sender->sendMessage("[EventMannger]player" . $player->getName() . "can't break any Blocks!");
 		              }
-		              if(($PLayerE = array_search($player->getName(), $array)) !== false){
-					unset($array[$PlayerE]);
-					$this->BreakBlockEvent->set("players", $array);
+		              if(isset($this->BlockBreakEvent[Player[$name]])){
+					unset($this->BlockBreakEvent[Player[$name]);
 						$sender->sendMessage("[EventMannger]player" . $player->getName() . "can now break Blocks!");
 		              }
 					}
@@ -286,20 +126,17 @@ $$this->EntitySpawnEvent1 = true;
 
 		               	if($args[1] == "item"){
 					if(isset($args[2])){
-				$item = $args[2]	
+				     $item = $args[2]
 		                if(!is_numeric($item)){
-		                $sender->sendMessage("[EventMannger]this is not an ID of a item");	
+		                $sender->sendMessage("[EventMannger]this is not an ID of a block");
 		                }
-		              if(is_numeric($item)){
-
-		              	$array = $this->BlockBreakEvent->get("items");
-				array_push($array, $item);
-				$this->BlockBreakEvent->set("items", $array);
-				$sender->sendMessage("[EventMannger]Nobody is now allowed to break block with that item");
+		              if(is_numeric($item) and !isset($this->BlockBreakEvent[Item[$item]])){
+		              	$this->BlockBreakEvent[Item[$item]];
+				$sender->sendMessage("[EventMannger]Nobody is now allowed to break blocks with that item");
 		              }
-		              if(($ItemE = array_search($item, $array)) !== false){
-					unset($array[$itemE]);
-					$this->BreakBlockEvent->set("items", $array);
+		              if(isset($this->BlockBreakEvent[Blocks[$block]])){
+					unset($this->BreakBlockEvent[Item[$item]]);
+					$sender->sendMessage("[EventMannger]Everybody is now allowed to break blocks with that item");
 		              }
 					}
 				}
@@ -309,41 +146,40 @@ $$this->EntitySpawnEvent1 = true;
 		               if(!$this->getServer()->isLevelLoaded($world)){
 				$sender->sendMessage("[EventMannger]world" . $world . "is not found!");
 		               }
-			if($this->getServer()->isLevelLoaded($world)){
-			$array = $this->BlockBreakEvent->get("levels");
-				array_push($array, $world);
-				$this->BlockBreakEvent->set("levels", $array);
+			if($this->getServer()->isLevelLoaded($world) and !isset($this->BlockBreakEvent[Level[$world]])){
+                  $this->BlockBreakEvent[Level[$world]]
 				$sender->sendMessage("[EventMannger]players can't break blocks at " . $world);
 		              }
-		              if(($WolrdE = array_search($world, $array)) !== false){
-					unset($array[$WolrdE]);
-					$this->BreakBlockEvent->set("levels", $array);
+		              if(isset($this->BlockBreakEvent[Level[$world]])){
+					unset($this->BlockBreakEvent[Level[$world]]);
 						$sender->sendMessage("[EventMannger]players now can break blocks at " . $world);
 		              }
 					}
 				}
 				}
 				if($args[0] == "bpe"){
-				$this->BlockPlaceEvent1 = false;
-				if($this->BlockPlaceEvent1 = false){
-					$this->BlockPlaceEvent1 = true;
-				}
+				 if(isset($this->BlockBreakEvent[Enable[false]])){
+					$sender->sendMessage("[EventMannger] BlockBreakEvent is now Enabled!");
+					$this->BlockBreakEvent[Enable[true]];
+				}else{
+					unset($this->BreakBlockEvent[$Enable[true]]);
+					 $this->BreakBlockEvent[Enable[false]];
+					$sender->sendMessage("[EventMannger] BlockBreakEvent is now Disabled!");
+					}
 
 				if($args[1] == "block"){
 					if(isset($args[2])){
 		                $block = $args[2]
-		                if(!is_numeric($block)){
-		                $sender->sendMessage("[EventMannger]this is not an ID of a block");	
+		                if(!is_numeric($block){
+		                $sender->sendMessage("[EventMannger]this is not an ID of a block");
 		                }
-		              if(is_numeric($block)){
-		              	$array = $this->BlockPlaceEvent->get("blocks");
-				array_push($array, $block);
-				$this->BlockBreakEvent->set("blocks", $array);
-				$sender->sendMessage("[EventMannger]Nobody is now allowed to place that block");
+		              if(is_numeric($block) and !isset($this->BlockPlaceEvent[Blocks[$block]])){
+		              	$this->BlockPlaceEvent[Blocks[$block]];
+				$sender->sendMessage("[EventMannger]Nobody is now allowed to break that block");
 		              }
-		              if(($BlockE = array_search($block, $array)) !== false){
-					unset($array[$BlockE]);
-					$this->BreakPlaceEvent->set("blocks", $array);
+		              if(isset($this->BlockBreakEvent[Blocks[$block]])){
+					unset($this->BreakBlockEvent[Blocks[$block]]);
+					$sender->sendMessage("[EventMannger]Everybody is now allowed to break that block");
 		              }
 					}
 				}
@@ -370,7 +206,7 @@ $$this->EntitySpawnEvent1 = true;
 					if(isset($args[2])){
 		                $block = $args[2]
 		                if(!is_numeric($block)){
-		                $sender->sendMessage("[EventMannger]this is not an ID of a block");	
+		                $sender->sendMessage("[EventMannger]this is not an ID of a block");
 		                }
 		              if(is_numeric($block)){
 		              	$array = $this->BlockPlaceEvent->get("blocksAgainst");
@@ -450,7 +286,7 @@ $$this->EntitySpawnEvent1 = true;
 					if(isset($args[2])){
 		                $damage = $args[2]
 		                if(!is_numeric($block)){
-		                $sender->sendMessage("[EventMannger]this is not an amount of a damage");	
+		                $sender->sendMessage("[EventMannger]this is not an amount of a damage");
 		                }
 		              if(is_numeric($damage)){
 		              	$array = $this->EntityDamageByEntityEvent->get("damage");
@@ -466,9 +302,9 @@ $$this->EntitySpawnEvent1 = true;
 				}
 				if($args[1] == "eiscreature"){
 	$v = $this->EntityDamageByEntityEvent->get("EisCreature");
-					if($v !== false){ 
+					if($v !== false){
 		               	$this->EntityDamageByEntityEvent->set("EisCreature", false);
-		              
+
 		              	 if($v =){
 		              	$array = $this->EntityDamageByEntityEvent->get("EPlayer");
 				array_push($array, $player->getName);
