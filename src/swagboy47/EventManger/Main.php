@@ -30,7 +30,6 @@ use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\event\server\DataPacketSendEvent;
 use pocketmine\event\entity\EntityMotionEvent;
-use pocketmine\event\
 use pocketmine\event\server\ServerCommandEvent;
 
 class Main extends PluginBase implements Listener{
