@@ -1,0 +1,18 @@
+name: EventManger
+main: swagboy47\EventManger\Main
+version: 1
+api: [1.0.0, 1.1.0]
+
+load: POSTWORLD
+authors: [Swagboy47]
+description: an easy system to control your server's events!
+
+commands:
+    eventmanger:
+        desctiption: "allow you to use the command!"
+        usage: "/eventmanger <eventname>"
+        aiases: [em]
+
+permissions:
+    eventmanger.control:
+        default: op
